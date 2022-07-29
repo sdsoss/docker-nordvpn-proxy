@@ -1,6 +1,6 @@
 # nordvpn-proxy
 
-## Config (.env)
+## Config [.env.dist](.env)
 
 Get NordVpn login : https://my.nordaccount.com/fr/dashboard/nordvpn/
 
