@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+
+    vpn:
+        container_name: vpn
+        image: jeroenslot/nordvpn-proxy:latest 
+        restart: always
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        cap_add:
+            - NET_ADMIN
+        sysctls:
+            - net.ipv6.conf.all.disable_ipv6=0
+        environment:
+            USERNAME: ${VPN_USERNAME:-username}
+            PASSWORD: ${VPN_PASSWORD:-pass}
+            LOCAL_NETWORK: 192.168.1.0/24
+            TZ: "Europe/Paris" # Timezone
+        ports:
+            - ${PROXY_PORT:-8118}:8118
+        volumes:
+            - ovpn-data:/app/ovpn/config 
+        networks:
+            - vpn
+
+networks:
+    vpn:
+
+volumes:
+    ovpn-data:
