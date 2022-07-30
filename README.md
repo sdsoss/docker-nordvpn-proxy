@@ -9,7 +9,7 @@ Get NordVpn login : https://my.nordaccount.com/fr/dashboard/nordvpn/
 ## Run
 
 ```
-docker-compose up
+docker-compose -p sdsos up -d
 ```
 
 ## License
